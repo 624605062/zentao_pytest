@@ -1,13 +1,11 @@
 from selenium import webdriver
 from commom.base import Base
 import pytest
-
 #-------------定位元素------------------#
 loc1=('id','account')
 loc2=('css selector','[name="password"]')
 loc3=('xpath',"//*[@id='submit']")
 login_user=('css selector','#ueseMenu>a')#登录后的用户名
-
 class TestZenTaoLogin():
     driver=webdriver.Chrome()
     zen=Base(driver)
@@ -43,6 +41,6 @@ class TestZenTaoLogin():
         self.zen.click(loc3)
         result = self.zen.get_text(login_user)
         print('登录结果，获取到用户名：%s' % result)
-        assert result == ''
+        assert result == ""
 if __name__ == '__main__':
     pytest.main(['-v','test_login.py'])
