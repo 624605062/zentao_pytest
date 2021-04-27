@@ -117,7 +117,9 @@ class Base():
         try:
             t=self.findElement(locator).text
             return t
-        except:
+            print('获取到的元素为：%s'%t)
+        except Exception as ex:
+            print(ex)
             print('获取text失败，返回”“')
             return ""
 
@@ -188,8 +190,9 @@ class Base():
         ActionChains(self.driver).move_to_element(ele).perform()
 
 if __name__ == '__main__':
-    driver=webdriver.Chrome
+    driver=webdriver.Chrome()
     web=Base(driver)
     driver.get('https://home.cnblogs.com/u/yoyoketang/')
     loc_1=('id','header_user_left')
     t=web.get_text(loc_1)
+
